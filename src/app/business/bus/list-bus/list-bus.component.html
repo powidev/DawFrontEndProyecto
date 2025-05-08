@@ -1,0 +1,37 @@
+<!-- list-bus.component.html -->
+<div class="container mt-4">
+    <h3 class="text-center text-4xl font-bold">Lista de Buses</h3>
+    <button class="btn btn-primary" (click)="abrirModal()">Registrar Nuevo Bus</button>
+    <table class="table mt-3">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Modelo</th>
+          <th>Marca</th>
+          <th>Año</th>
+          <th>Capacidad</th>
+          <th>Placa</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bus of buses; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ bus.modelo }}</td>
+          <td>{{ bus.marca }}</td>
+          <td>{{ bus.anio }}</td>
+          <td>{{ bus.capacidad }}</td>
+          <td>{{ bus.placa }}</td>
+          <td>
+            <button class="btn btn-warning me-2" (click)="editarBus(bus)">Editar</button>
+            <button class="btn btn-danger" (click)="eliminarBus(bus.idBus)">Eliminar</button>
+          </td>          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <app-create-bus
+  [busEditar]="busSeleccionado"
+  (busCreado)="cargarBuses()">
+</app-create-bus>

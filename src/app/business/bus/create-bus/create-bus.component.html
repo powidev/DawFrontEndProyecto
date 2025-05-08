@@ -1,0 +1,43 @@
+<!-- create-bus.component.html -->
+<div class="modal fade" id="nuevoBusModal" tabindex="-1" aria-labelledby="nuevoBusModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="nuevoBusModalLabel">
+                {{ busEditar ? 'Editar Bus' : 'Agregar Nuevo Bus' }}
+              </h5>
+              
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formBus" (ngSubmit)="agregarBus()">
+            <div class="mb-3">
+              <label for="modelo" class="form-label">Modelo</label>
+              <input type="text" id="modelo" class="form-control" formControlName="modelo" required />
+            </div>
+            <div class="mb-3">
+              <label for="marca" class="form-label">Marca</label>
+              <input type="text" id="marca" class="form-control" formControlName="marca" required />
+            </div>
+            <div class="mb-3">
+              <label for="anio" class="form-label">Año</label>
+              <input type="number" id="anio" class="form-control" formControlName="anio" required />
+            </div>
+            <div class="mb-3">
+              <label for="capacidad" class="form-label">Capacidad</label>
+              <input type="number" id="capacidad" class="form-control" formControlName="capacidad" required />
+            </div>
+            <div class="mb-3">
+              <label for="placa" class="form-label">Placa</label>
+              <input type="text" id="placa" class="form-control" formControlName="placa" required />
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

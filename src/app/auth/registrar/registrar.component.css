@@ -1,0 +1,44 @@
+.registrar-page {
+  background: url('../../../assets/img/BusLogin.jpg') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.registrar-glass {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 2rem;
+  width: 22rem;
+}
+
+.registrar-glass form div {
+  margin-bottom: 1rem;
+}
+
+.registrar-glass input {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.registrar-glass button {
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #0d6efd;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.registrar-glass button:disabled {
+  background-color: #6c757d;
+}

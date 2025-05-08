@@ -1,4 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+/* No Borrar Esta Linea */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42a948; /* verde-claro */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* rojo-claro */
+}

@@ -1,0 +1,85 @@
+<!-- Modal para Crear / Editar Viaje -->
+<div class="modal fade" id="nuevoViajeModal" tabindex="-1" aria-labelledby="nuevoViajeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h5 class="modal-title" id="nuevoViajeModalLabel">
+          {{ viajeEditar ? 'Editar Viaje' : 'Nuevo Viaje' }}
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      
+      <div class="modal-body">
+        <form [formGroup]="formViaje" (ngSubmit)="guardarViaje()">
+          <div class="row g-3">
+            
+            <!-- Fecha de Salida -->
+            <div class="col-md-6">
+              <label for="fechaSalida" class="form-label">Fecha de Salida</label>
+              <input type="datetime-local" id="fechaSalida" formControlName="fechaSalida" class="form-control" />
+              <div *ngIf="formViaje.get('fechaSalida')?.invalid && formViaje.get('fechaSalida')?.touched" class="text-danger">
+                La fecha de salida es obligatoria.
+              </div>
+            </div>
+
+            <!-- Fecha de Llegada -->
+            <div class="col-md-6">
+              <label for="fechaLlegada" class="form-label">Fecha de Llegada</label>
+              <input type="datetime-local" id="fechaLlegada" formControlName="fechaLlegada" class="form-control" />
+              <div *ngIf="formViaje.get('fechaLlegada')?.invalid && formViaje.get('fechaLlegada')?.touched" class="text-danger">
+                La fecha de llegada es obligatoria.
+              </div>
+            </div>
+
+            <!-- Precio -->
+            <div class="col-md-6">
+              <label for="precio" class="form-label">Precio (S/)</label>
+              <input type="number" id="precio" formControlName="precio" class="form-control" min="0" step="0.01" />
+              <div *ngIf="formViaje.get('precio')?.invalid && formViaje.get('precio')?.touched" class="text-danger">
+                El precio es obligatorio y debe ser mayor o igual a 0.
+              </div>
+            </div>
+
+            <!-- Seleccionar Destino -->
+            <div class="col-md-6">
+              <label for="idDestino" class="form-label">Destino</label>
+              <select id="idDestino" formControlName="idDestino" class="form-select">
+                <option value="" disabled selected>Seleccione un destino</option>
+                <option *ngFor="let destino of destinos" [ngValue]="destino.idDestino">
+                  {{ destino.nombre }}
+                </option>
+              </select>
+              <div *ngIf="formViaje.get('idDestino')?.invalid && formViaje.get('idDestino')?.touched" class="text-danger">
+                El destino es obligatorio.
+              </div>
+            </div>
+
+            <!-- Seleccionar Bus -->
+            <div class="col-md-12">
+              <label for="idBus" class="form-label">Bus</label>
+              <select id="idBus" formControlName="idBus" class="form-select">
+                <option value="" disabled selected>Seleccione un bus</option>
+                <option *ngFor="let bus of buses" [ngValue]="bus.idBus">
+                  {{ bus.modelo }} - {{ bus.placa }}
+                </option>
+              </select>
+              <div *ngIf="formViaje.get('idBus')?.invalid && formViaje.get('idBus')?.touched" class="text-danger">
+                El bus es obligatorio.
+              </div>
+            </div>
+
+          </div>
+
+          <div class="mt-4 text-end">
+            <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">
+              {{ viajeEditar ? 'Actualizar' : 'Guardar' }}
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

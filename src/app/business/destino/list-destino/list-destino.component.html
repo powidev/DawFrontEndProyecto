@@ -1,0 +1,33 @@
+<div class="container mt-4">
+    <h3 class="text-center text-4xl font-bold">Lista de Destinos</h3>
+    <button class="btn btn-primary mb-3" (click)="abrirModal()">Registrar Nuevo Destino</button>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Imagen</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let destino of destinos; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ destino.nombre }}</td>
+          <td>
+            <img [src]="destino.imagen" alt="Imagen de {{ destino.nombre }}" width="100" />
+          </td>                             
+          <td>
+            <button class="btn btn-warning me-2" (click)="editarDestino(destino)">Editar</button>
+            <button class="btn btn-danger" (click)="eliminarDestino(destino.idDestino)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <app-create-destino
+    [destinoEditar]="destinoSeleccionado"
+    (destinoCreado)="cargarDestinos()">
+  </app-create-destino>
+  
