@@ -6,8 +6,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CreateViajeComponent } from '../create-viaje/create-viaje.component';
 import Swal from 'sweetalert2';
 import { Modal } from 'bootstrap';
-import { Bus } from '../../../Interface/bus';
-import { Destino } from '../../../Interface/destino';
 
 
 @Component({

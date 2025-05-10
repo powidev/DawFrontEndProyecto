@@ -36,6 +36,7 @@ export class CreateViajeComponent implements OnInit, OnChanges {
     this.formViaje = this.fb.group({
       fechaSalida: ['', Validators.required],
       fechaLlegada: ['', Validators.required],
+      incidencias: ['', Validators.required],
       precio: ['', [Validators.required, Validators.min(0)]],
       idDestino: [null, Validators.required],
       idBus: [null, Validators.required],
@@ -107,13 +108,13 @@ export class CreateViajeComponent implements OnInit, OnChanges {
       
       // Crear el objeto viaje que se enviará al servicio
       const viaje: any = {
-        fechaSalida: formData.fechaSalida,
-        fechaLlegada: formData.fechaLlegada,
-        precio: formData.precio,
-        idDestino: formData.idDestino,  // Enviar solo el idDestino, no el objeto
-        idBus: formData.idBus  // Lo mismo para idBus
-      };
-      
+      fechaSalida: formData.fechaSalida,
+      fechaLlegada: formData.fechaLlegada,
+      precio: formData.precio,
+      incidencias: formData.incidencias, // opcional
+      destino: { idDestino: formData.idDestino }, // ✅ Correcto
+      bus: { idBus: formData.idBus }              // ✅ Correcto
+    };
 
       if (this.viajeEditar) {
         viaje.idViaje = this.viajeEditar.idViaje;

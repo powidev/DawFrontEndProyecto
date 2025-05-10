@@ -13,7 +13,34 @@
       <div class="modal-body">
         <form [formGroup]="formViaje" (ngSubmit)="guardarViaje()">
           <div class="row g-3">
+            <!-- Seleccionar Bus -->
+            <div class="col-md-12">
+              <label for="idBus" class="form-label">Bus</label>
+              <select id="idBus" formControlName="idBus" class="form-select">
+                <option value="" disabled selected>Seleccione un bus</option>
+                <option *ngFor="let bus of buses" [ngValue]="bus.idBus">
+                  {{ bus.modelo }} - {{ bus.placa }}
+                </option>
+              </select>
+              <div *ngIf="formViaje.get('idBus')?.invalid && formViaje.get('idBus')?.touched" class="text-danger">
+                El bus es obligatorio.
+              </div>
+            </div>
             
+            <!-- Seleccionar Destino -->
+            <div class="col-md-6">
+              <label for="idDestino" class="form-label">Destino</label>
+              <select id="idDestino" formControlName="idDestino" class="form-select">
+                <option value="" disabled selected>Seleccione un destino</option>
+                <option *ngFor="let destino of destinos" [ngValue]="destino.idDestino">
+                  {{ destino.nombre }}
+                </option>
+              </select>
+              <div *ngIf="formViaje.get('idDestino')?.invalid && formViaje.get('idDestino')?.touched" class="text-danger">
+                El destino es obligatorio.
+              </div>
+            </div>
+
             <!-- Fecha de Salida -->
             <div class="col-md-6">
               <label for="fechaSalida" class="form-label">Fecha de Salida</label>
@@ -32,6 +59,15 @@
               </div>
             </div>
 
+            <!-- Incidencias -->
+            <div class="col-md-6">
+              <label for="incidencias" class="form-label">Incidencias</label>
+              <input type="text" id="incidencias" formControlName="incidencias" class="form-control" min="0" step="1" />
+              <div *ngIf="formViaje.get('incidencias')?.invalid && formViaje.get('incidencias')?.touched" class="text-danger">
+                La incidencias es obligatorio.
+              </div>
+            </div>
+
             <!-- Precio -->
             <div class="col-md-6">
               <label for="precio" class="form-label">Precio (S/)</label>
@@ -40,35 +76,6 @@
                 El precio es obligatorio y debe ser mayor o igual a 0.
               </div>
             </div>
-
-            <!-- Seleccionar Destino -->
-            <div class="col-md-6">
-              <label for="idDestino" class="form-label">Destino</label>
-              <select id="idDestino" formControlName="idDestino" class="form-select">
-                <option value="" disabled selected>Seleccione un destino</option>
-                <option *ngFor="let destino of destinos" [ngValue]="destino.idDestino">
-                  {{ destino.nombre }}
-                </option>
-              </select>
-              <div *ngIf="formViaje.get('idDestino')?.invalid && formViaje.get('idDestino')?.touched" class="text-danger">
-                El destino es obligatorio.
-              </div>
-            </div>
-
-            <!-- Seleccionar Bus -->
-            <div class="col-md-12">
-              <label for="idBus" class="form-label">Bus</label>
-              <select id="idBus" formControlName="idBus" class="form-select">
-                <option value="" disabled selected>Seleccione un bus</option>
-                <option *ngFor="let bus of buses" [ngValue]="bus.idBus">
-                  {{ bus.modelo }} - {{ bus.placa }}
-                </option>
-              </select>
-              <div *ngIf="formViaje.get('idBus')?.invalid && formViaje.get('idBus')?.touched" class="text-danger">
-                El bus es obligatorio.
-              </div>
-            </div>
-
           </div>
 
           <div class="mt-4 text-end">

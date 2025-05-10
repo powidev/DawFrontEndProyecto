@@ -19,6 +19,7 @@ export const routes: Routes = [
             {
                 path: 'profile',
                 loadComponent: () => import('./business/profile/profile.component')
+
             },
             {
                 path: 'bus',

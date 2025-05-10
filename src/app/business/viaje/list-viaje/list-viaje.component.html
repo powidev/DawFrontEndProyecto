@@ -6,22 +6,24 @@
     <thead>
       <tr>
         <th>#</th>
+        <th>Bus</th>
+        <th>Destino</th>
         <th>Fecha de Salida</th>
         <th>Fecha de Llegada</th>
-        <th>Precio</th>
-        <th>Destino</th>
-        <th>Bus</th>
+        <th>Incidencia</th>
+        <th>Precio</th>     
         <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let viaje of viajes; let i = index">
         <td>{{ i + 1 }}</td>
+        <td>{{ viaje.bus.modelo }}</td>
+        <td>{{ viaje.destino.nombre }}</td>
         <td>{{ viaje.fechaSalida | date:'dd/MM/yyyy HH:mm' }}</td>
         <td>{{ viaje.fechaLlegada | date:'dd/MM/yyyy HH:mm' }}</td>
-        <td>S/. {{ viaje.precio }}</td>
-        <td>{{ viaje.destino.nombre }}</td>
-        <td>{{ viaje.bus.modelo }}</td>
+        <td>{{ viaje.incidencias }}</td>
+        <td>S/. {{ viaje.precio }}</td>   
         <td>
           <button class="btn btn-warning me-2" (click)="editarViaje(viaje)">Editar</button>
           <button class="btn btn-danger" (click)="eliminarViaje(viaje.idViaje)">Eliminar</button>

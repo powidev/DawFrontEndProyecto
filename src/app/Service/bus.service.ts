@@ -13,7 +13,7 @@ export class BusService {
   constructor(private httpClient:HttpClient) { }
 
   obtenerListaBuses(): Observable<Bus[]> {
-    return this.httpClient.get<Bus[]>(`${this.baseUrl}/listar`);  // Asegúrate de que tu API tenga la ruta '/listar'
+    return this.httpClient.get<Bus[]>(`${this.baseUrl}/listar`);
   }
    // Agregar un nuevo bus
   agregarBus(bus: Bus): Observable<Bus> {

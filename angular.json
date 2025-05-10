@@ -30,6 +30,8 @@
               "src/styles.css"
             ],
             "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "src/assets/js/animations.js"
             ],
             "server": "src/main.server.ts",
             "prerender": true,
