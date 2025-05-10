@@ -1,29 +1,32 @@
-<div class="flex items-center justify-center bg-gray-100 rounded-xl py-12">
-  <div class="w-full max-w-md p-8 space-y-6 bg-white rounded-xl shadow-lg">
-    <div class="flex flex-col items-center">
-      <img class="w-24 h-24 rounded-full border-2 border-gray-300 shadow-md" src="https://www.github.com/powidev.png" alt="Foto de perfil">
-      <h2 class="mt-4 text-2xl font-bold text-gray-900">William Calderon</h2>
-      <p class="text-sm text-gray-600">Desarrollador Web</p>
+<div class="profile-container">
+  <div class="profile-box">
+    <div class="profile-header">
+      <img 
+        class="profile-img" 
+        [src]="'https://www.github.com/powidev.png'" 
+        alt="Foto de perfil">
+      <h2 class="profile-name">{{ usuario?.username }}</h2>
+      <p class="profile-description">Usuario registrado</p>
     </div>
-    <div class="mt-6 space-y-4">
-      <div class="flex items-center space-x-2">
-        <svg class="w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M4.5 9.75A.75.75 0 015.25 9h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H5.25a.75.75 0 01-.75-.75V9.75z"></path></svg>
-        <span class="text-gray-700 font-medium">Correo:</span>
-        <span class="text-gray-600">william&#64;gmail.com</span>
+    <div class="profile-details">
+      <div class="profile-detail">
+        <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M4.5 9.75A.75.75 0 015.25 9h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H5.25a.75.75 0 01-.75-.75V9.75z"></path>
+        </svg>
+        <span class="label">ID:</span>
+        <span class="value">{{ usuario?.id }}</span>
       </div>
-      <div class="flex items-center space-x-2">
-        <svg class="w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 000 20 10 10 0 000-20z"></path></svg>
-        <span class="text-gray-700 font-medium">Ubicación:</span>
-        <span class="text-gray-600">Lima, Perú</span>
-      </div>
-      <div class="flex items-center space-x-2">
-        <svg class="w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M9 3a7 7 0 000 14 7 7 0 000-14z"></path></svg>
-        <span class="text-gray-700 font-medium">Miembro desde:</span>
-        <span class="text-gray-600">05 Mayo 2025</span>
+      <div class="profile-detail">
+        <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2a10 10 0 000 20 10 10 0 000-20z"></path>
+        </svg>
+        <span class="label">Roles:</span>
+        <span class="value">
+          <ng-container *ngFor="let rol of usuario?.roles; let i = index">
+            {{ rol.name }}<span *ngIf="i < usuario.roles.length - 1">, </span>
+          </ng-container>
+        </span>
       </div>
     </div>
-    <button class="mt-6 w-full p-3 font-semibold text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105">
-      ✏️ Editar Perfil
-    </button>
   </div>
 </div>
