@@ -1,0 +1,64 @@
+<div class="modal fade" id="nuevaRevisionModal" tabindex="-1" aria-labelledby="nuevaRevisionModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="nuevaRevisionModalLabel">
+          {{ revisionEditar ? 'Editar Revisión' : 'Nueva Revisión' }}
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formRevision" (ngSubmit)="guardarRevision()">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="fechaRevision" class="form-label">Fecha de Revisión</label>
+              <input type="datetime-local" id="fechaRevision" formControlName="fechaRevision" class="form-control" />
+            </div>
+
+            <div class="col-md-6">
+              <label for="tipoRevision" class="form-label">Tipo de Revisión</label>
+              <input type="text" id="tipoRevision" formControlName="tipoRevision" class="form-control" />
+            </div>
+
+            <div class="col-md-6">
+              <label for="resultado" class="form-label">Resultado</label>
+              <select id="resultado" formControlName="resultado" class="form-select">
+                <option value="Aprobado">Aprobado</option>
+                <option value="Observado">Observado</option>
+                <option value="Rechazado">Rechazado</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label for="observaciones" class="form-label">Observaciones</label>
+              <input type="text" id="observaciones" formControlName="observaciones" class="form-control" />
+            </div>
+
+            <div class="col-md-6">
+              <label for="bus" class="form-label">Bus</label>
+              <!-- Bus -->
+              <select id="idBus" formControlName="idBus" class="form-select">
+                <option value="" disabled selected>Seleccione un bus</option>
+                <option *ngFor="let bus of buses" [value]="bus.idBus">{{ bus.placa }} - {{ bus.modelo }}</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label for="personal" class="form-label">Personal Asignado</label>
+              <!-- Personal -->
+              <select id="idPersonal" formControlName="idPersonal" class="form-select">
+                <option value="" disabled selected>Seleccione un personal</option>
+                <option *ngFor="let p of personal" [value]="p.id">{{ p.nombre }} {{ p.apellido }}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="mt-4 text-end">
+            <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">{{ revisionEditar ? 'Actualizar' : 'Guardar' }}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

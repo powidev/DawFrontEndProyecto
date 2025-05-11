@@ -1,0 +1,41 @@
+<div class="modal fade" id="nuevoPersonalModal" tabindex="-1" aria-labelledby="nuevoPersonalModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="nuevoPersonalModalLabel">
+            {{ personalEditar ? 'Editar Personal' : 'Registrar Personal' }}
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formPersonal" (ngSubmit)="guardarPersonal()">
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input type="text" id="nombre" class="form-control" formControlName="nombre" />
+            </div>
+            <div class="mb-3">
+              <label for="apellido" class="form-label">Apellido</label>
+              <input type="text" id="apellido" class="form-control" formControlName="apellido" />
+            </div>
+            <div class="mb-3">
+              <label for="dni" class="form-label">DNI</label>
+              <input type="text" id="dni" class="form-control" formControlName="dni" />
+            </div>
+            <div class="mb-3">
+              <label for="cargo" class="form-label">Cargo</label>
+              <input type="text" id="cargo" class="form-control" formControlName="cargo" />
+            </div>
+            <div class="mb-3">
+              <label for="cargo" class="form-label">Telefono</label>
+              <input type="text" id="telefono" class="form-control" formControlName="telefono" />
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

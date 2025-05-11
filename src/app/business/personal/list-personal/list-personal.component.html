@@ -1,0 +1,37 @@
+<div class="container mt-4">
+    <h3 class="text-center text-4xl font-bold">Lista de Personal</h3>
+    <button class="btn btn-primary" (click)="abrirModal()">Registrar Nuevo Personal</button>
+    <table class="table mt-3">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>DNI</th>
+          <th>Cargo</th>
+          <th>Telefono</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of personalList; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ p.nombre }}</td>
+          <td>{{ p.apellido }}</td>
+          <td>{{ p.dni }}</td>
+          <td>{{ p.cargo }}</td>
+          <td>{{ p.telefono }}</td>
+          <td>
+            <button class="btn btn-warning me-2" (click)="editarPersonal(p)">Editar</button>
+            <button class="btn btn-danger" (click)="eliminarPersonal(p.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <app-create-personal
+    [personalEditar]="personalSeleccionado"
+    (personalGuardado)="cargarPersonal()">
+  </app-create-personal>
+  

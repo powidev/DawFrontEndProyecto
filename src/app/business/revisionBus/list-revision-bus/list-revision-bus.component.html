@@ -1,0 +1,39 @@
+<div class="container mt-4">
+    <h3 class="text-center text-4xl font-bold">Lista de Revisiones de Buses</h3>
+    <button class="btn btn-primary" (click)="abrirModal()">Registrar Nueva Revisión</button> 
+    <table class="table mt-3">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Personal Asignado</th>
+          <th>Modelo -- Placa</th>
+          <th>Tipo de Revisión</th>
+          <th>Fecha de Revisión</th>
+          <th>Observaciones</th>
+          <th>Resultado</th>                   
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let revision of revisionBuses; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ revision.personal.nombre }} {{ revision.personal.apellido }}</td>
+            <td>{{ revision.bus.modelo }} -- {{ revision.bus.placa }}</td>
+            <td>{{ revision.tipoRevision }}</td>
+            <td>{{ revision.fechaRevision | date:'dd/MM/yyyy HH:mm' }}</td>
+            <td>{{ revision.observaciones }}</td>
+            <td>{{ revision.resultado }}</td>
+            <td>
+              <button class="btn btn-warning me-2" (click)="editarRevision(revision)">Editar</button>
+              <button class="btn btn-danger" (click)="eliminarRevision(revision.idRevision)">Eliminar</button>
+            </td>
+          </tr>
+          
+      </tbody>
+    </table>
+  </div>
+  
+<app-create-revisionbus
+  [revisionEditar]="revisionSeleccionada"
+  (revisionCreada)="cargarRevisiones()">
+</app-create-revisionbus>

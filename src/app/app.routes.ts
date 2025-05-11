@@ -34,6 +34,14 @@ export const routes: Routes = [
                 loadComponent: () => import('./business/viaje/list-viaje/list-viaje.component'),
             },
             {
+                path: 'personal',
+                loadComponent: () => import('./business/personal/list-personal/list-personal.component'),
+            },
+            {
+                path: 'revisionBuses',
+                loadComponent: () => import('./business/revisionBus/list-revision-bus/list-revision-bus.component'),
+            },
+            {
                 path: '',
                 redirectTo: 'dashboard',
                 pathMatch: 'full'
